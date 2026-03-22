@@ -5,10 +5,10 @@
  *      Author: devhu
  */
 
-#ifndef CUSTOM_THREADPRIORITIES_HPP_
-#define CUSTOM_THREADPRIORITIES_HPP_
+#ifndef CUSTOM_THREADPRIORITYTABLE_HPP_
+#define CUSTOM_THREADPRIORITYTABLE_HPP_
 
-namespace ThreadPriorities {
+namespace ThreadPriorityTable {
 	inline constexpr int COOLING_SYS_PRIORITY = 1;
 	inline constexpr int CHARGING_STAGE_PRIORITY = 2;
 	inline constexpr int ROTATING_BLOCK_PRIORITY = 3;
@@ -16,4 +16,4 @@ namespace ThreadPriorities {
 
 
 
-#endif /* CUSTOM_THREADPRIORITIES_HPP_ */
+#endif /* CUSTOM_THREADPRIORITYTABLE_HPP_ */

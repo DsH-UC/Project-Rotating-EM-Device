@@ -6,7 +6,8 @@
  */
 
 #include "ChargingStage.hpp"
-#include "ThreadPriorities.hpp"
+
+#include "ThreadPriorityTable.hpp"
 
 #define CAP_VOLTAGE_THRESHOLD_MIN 8// Voltage for a single shot
 #define CAP_VOLTAGE_THRESHOLD_MAX 48 // Fully charged cap voltage
@@ -122,7 +123,7 @@ namespace ChargingStage {
 				"Charging Stage Thread",
 				STACK_SIZE,
 				nullptr, // pvParameters
-				ThreadPriorites::CHARGING_STAGE_PRIORITY, // Thread Priority
+				ThreadPriorityTable::CHARGING_STAGE_PRIORITY, // Thread Priority
 				&csTaskHandle
 		);
 	}

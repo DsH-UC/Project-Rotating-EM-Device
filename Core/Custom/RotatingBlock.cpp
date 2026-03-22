@@ -100,7 +100,7 @@ m		int pwm = this->rbGPIO.pin_Motor_IGBT_Gate;
 				"Rotating Block Thread",
 				STACK_SIZE,
 				nullptr,
-				ThreadPriorities::ROTATING_BLOCK_PRIORITY,
+				ThreadPriorityTable::ROTATING_BLOCK_PRIORITY,
 				&(this->rbTaskHandle)
 		);
 	}

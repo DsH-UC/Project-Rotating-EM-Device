@@ -6,7 +6,8 @@
  */
 
 #include "CoolingSystem.hpp"
-#include "ThreadPriorities.hpp"
+
+#include "ThreadPriorityTable.hpp"
 #define STACK_SIZE 512 //bytes
 #define COOLING_SYS_THRESHOLD 40 // Deg. Celsius
 #define STATE_FAN_OFF false
@@ -96,7 +97,7 @@ namespace CoolingSystem {
 				"Cooling System Thread",
 				STACK_SIZE, //
 				nullptr, // pvParameters
-				ThreadPriorities::COOLING_SYS_PRIORITY, //Thread Priority
+				ThreadPriorityTable::COOLING_SYS_PRIORITY, //Thread Priority
 				&csTaskHandle
 		);
 	}

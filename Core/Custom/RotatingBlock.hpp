@@ -11,7 +11,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
-#include "ThreadPriorities.hpp"
+#include "ThreadPriorityTable.hpp"
 
 // Interface file for the Rotating Block Thread from the
 // SW Architecture Block Diagram
