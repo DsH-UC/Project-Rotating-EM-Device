@@ -19,6 +19,12 @@
 #define EPSILON 1e-4f
 
 namespace RotatingBlock {
+
+	// Internal namespace for compile time constants
+	namespace Constants {
+
+	}
+
 	RotatingBlock& RotatingBlock::getInstance(){
 		static RotatingBlock instance;
 		return instance;
@@ -70,6 +76,8 @@ namespace RotatingBlock {
 	void RotatingBlock::UI_LaunchButtonISR(void* pvParameters){ // TODO: Still need to get the interrupt conditional/flag wrapped around this block
 
 		BaseType_t xHigherPriorityTaskwoken = pdFALSE;
+
+		// Preepmt thread from Running State -> Ready state
 		xSemaphoreGiveFromISR(this->uiLaunchButtonSemaphore, &xHigherPriorityTaskwoken);
 		portYIELD_FROM_ISR(xHigherPriorityTaskwoken);
 	}

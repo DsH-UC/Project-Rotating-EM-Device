@@ -14,6 +14,11 @@
 #define THREAD_BLOCK_DURATION_MS 50
 
 namespace CoolingSystem {
+
+	// Internal namespace for constants
+	namespace Constants {
+
+	}
 	struct CoolingSystemInputs {
 		float railTemp;
 		bool uiFanToggle;
@@ -78,6 +83,8 @@ namespace CoolingSystem {
 	static void UI_FanToggleISR(void* pvParameters){ // TODO: Still need to get the interrupt condition and clear it
 
 		BaseType_t xHigherPriorityTaskWoken = pdFalse;
+
+		// Preepmt thread from Running State -> Ready state
 		xSemaphoreGiveFromISR(uiFanToggleSemaphore, &xHigherPriorityTaskWoken);
 		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 	}

@@ -21,6 +21,12 @@
 #define NUM_RAIL_PAIRS 6
 
 namespace ChargingStage {
+
+	// Internal namespace for compile time constants
+	namespace Constants {
+
+	}
+
 	struct ChargingStageInputs {
 		float capVoltage;
 		bool uiLaunchButton;
@@ -102,6 +108,8 @@ namespace ChargingStage {
 
 	static void UI_LaunchButtonISR(void* pvParameters){ // TODO: Still need to get the interrupt condition and clear it
 		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+		// Preepmt thread from Running State -> Ready state
 		xSemaphoreGiveFromISR(uiLaunchButtonSemaphore, &xHigherPriorityTaskWoken);
 		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 	}
