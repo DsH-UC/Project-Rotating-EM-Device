@@ -99,6 +99,30 @@ namespace FaultDetector {
 		);
 	}
 
+	void FaultDetector::chr_stg_fault_ISR(void* pv_parameters){ // TODO: Still need to get the interrupt conditional/flag wrapped around this block
+		BaseType_t xHigherPriorityTaskwoken = pdFALSE;
+
+		// Preepmt thread from Running State -> Ready state
+		xSemaphoreGiveFromISR(this->fd_semaphores[Constants::CHR_STG_SEMPHR_IDX], &xHigherPriorityTaskwoken);
+		portYIELD_FROM_ISR(xHigherPriorityTaskwoken);
+	}
+
+	void FaultDetector::rb_fault_ISR(void* pv_parameters){ // TODO: Still need to get the interrupt conditional/flag wrapped around this block
+		BaseType_t xHigherPriorityTaskwoken = pdFALSE;
+
+		// Preepmt thread from Running State -> Ready state
+		xSemaphoreGiveFromISR(this->fd_semaphores[Constants::RB_SEMPHR_IDX], &xHigherPriorityTaskwoken);
+		portYIELD_FROM_ISR(xHigherPriorityTaskwoken);
+	}
+
+	void FaultDetector::cool_sys_fault_ISR(void* pv_parameters){ // TODO: Still need to get the interrupt conditional/flag wrapped around this block
+		BaseType_t xHigherPriorityTaskwoken = pdFALSE;
+
+		// Preepmt thread from Running State -> Ready state
+		xSemaphoreGiveFromISR(this->fd_semaphores[Constants::COOL_SYS_SEMPHR_IDX], &xHigherPriorityTaskwoken);
+		portYIELD_FROM_ISR(xHigherPriorityTaskwoken);
+	}
+
 }
 
 

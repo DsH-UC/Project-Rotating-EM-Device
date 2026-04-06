@@ -53,6 +53,10 @@ namespace FaultDetector { // TODO
 
 		float* read_fault_sensors(int* sensor_pins, int num_sensors);
 		void fault_detector_task(void* pv_parameters);
+
+		void chr_stg_fault_ISR(void* pv_parameters);
+		void rb_fault_ISR(void* pv_parameters);
+		void cool_sys_fault_ISR(void* pv_parameters);
 	};
 }
 
