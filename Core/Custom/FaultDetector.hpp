@@ -10,47 +10,50 @@
 
 #include "FreeRTOS.h"
 #include "task.h"
+#include "semphr.h"
+#include "ThreadPriorityTable.hpp"
 
 namespace FaultDetector { // TODO
 	class FaultDetector {
 	public:
 		// Access function for singleton
-		static FaultDetector& getInstance();
+		static FaultDetector& get_instance();
 
 		// Disable copying
-		FaultDetector(const Singleton&) = delete;
+		FaultDetector(const FaultDetector&) = delete;
 		FaultDetector& operator = (const FaultDetector&) = delete;
 		FaultDetector(FaultDetector&&) = delete;
 		FaultDetector& operator = (FaultDetector&&) = delete;
 
-		bool resetAllSubsystemStateMachines(bool* isFault);
+		bool is_reset_all_subsystem_state_machines(bool* is_fault);
+		void start_fault_detector_subsystem_thread(void);
 	private:
 		// Power pins voltage divider inputs
-		struct FaultDetectorInputs {
-			float chargingStageVoltage;
-			float rotatingBlockVoltage;
-			float coolingSystemVoltage;
+		struct fault_detector_inputs_t {
+			float charging_stage_voltage;
+			float rotating_block_voltage;
+			float cooling_system_voltage;
+			bool reset;
 		};
 
-		struct FaultDetectorGPIO {
-			int pin_ChargingStagePWR_Voltage;
-			int pin_RotatingBlockPWR_Voltage;
-			int pin_CoolingSystemPWR_Voltage;
+		struct fault_detector_GPIO_t {
+			int pin_charging_stage_PWR_voltage;
+			int pin_rotating_block_PWR_voltage;
+			int pin_cooling_system_PWR_voltage;
 		}
 
-		FaultDetectorInputs fdInputs;
-		FaultDetectorGPIO fdGPIO;
+		fault_detector_inputs_t fd_inputs;
+		fault_detector_GPIO_t fd_GPIO;
 
-		bool isFault;
+		bool is_fault;
 
 		// Store thread in cpp file
-		TaskHandle_t fdTaskHandle;
-		SemaphoreHandle_t fdSemaphores[3];
+		TaskHandle_t fd_task_handle;
+		SemaphoreHandle_t fd_semaphores[3];
 
-		float readSensors(int* sensorPins, int numSensors);
-		void startFaultDetectorSubsystemThread(void);
+		float* read_fault_sensors(int* sensor_pins, int num_sensors);
+		void fault_detector_task(void* pv_parameters);
 	};
-
 }
 
 #endif /* CUSTOM_FAULTDETECTOR_HPP_ */

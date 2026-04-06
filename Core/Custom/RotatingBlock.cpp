@@ -82,6 +82,10 @@ namespace RotatingBlock {
 		portYIELD_FROM_ISR(xHigherPriorityTaskwoken);
 	}
 
+	float RotatingBlock::feedbackController(float* rotataryEncoderBuf, int n){ // TODO
+		return 0.0;
+	}
+
 	bool RotatingBlock::toggleMotorPWM(bool enPWM) { // TODO
 m		int pwm = this->rbGPIO.pin_Motor_IGBT_Gate;
 		return false;

@@ -23,7 +23,7 @@ namespace RotatingBlock {
 		static RotatingBlock& getInstance();
 
 		// Disable copying
-		RotatingBlock(const Singleton&) = delete;
+		RotatingBlock(const RotatingBlock&) = delete;
 		RotatingBlock& operator = (const RotatingBlock&) = delete;
 		RotatingBlock(RotatingBlock&&) = delete;
 		RotatingBlock& operator = (RotatingBlock&&) = delete;
@@ -66,6 +66,7 @@ namespace RotatingBlock {
 
 		// Helper blocks
 		bool toggleMotorPWM(bool enPWM); // TODO
+		float feedbackController(float* rotataryEncoderBuf, int n);
 		void incrementRailCounter(bool enRailCounter); // TODO
 
 	};
