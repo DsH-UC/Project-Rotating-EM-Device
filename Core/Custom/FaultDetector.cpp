@@ -56,9 +56,9 @@ namespace FaultDetector {
 		bool state = STATE_CLOSED; // Initial state
 
 		while(true){
-			if(xSemaphoreTake(this->fd_semaphores[Constants::CHR_STG_SEMPHR_IDX], pdMS_TO_TICKS(Constants::THREAD_BLOCK_DURATION_MS)) == pdFALSE) return;
-			if(xSemaphoreTake(this->fd_semaphores[Constants::RB__SEMPHR_IDX], pdMS_TO_TICKS(Constants::THREAD_BLOCK_DURATION_MS)) == pdFALSE) return;
-			if(xSemaphoreTake(this->fd_semaphores[Constants::COOL_SYS_SEMPHR_IDX], pdMS_TO_TICKS(Constants::THREAD_BLOCK_DURATION_MS)) == pdFALSE) return;
+			if(xSemaphoreTake(this->fd_semaphores[Constants::CHR_STG_SEMPHR_IDX], pdMS_TO_TICKS(Constants::THREAD_BLOCK_DURATION_MS)) == pdFALSE &&
+			xSemaphoreTake(this->fd_semaphores[Constants::RB__SEMPHR_IDX], pdMS_TO_TICKS(Constants::THREAD_BLOCK_DURATION_MS)) == pdFALSE &&
+			xSemaphoreTake(this->fd_semaphores[Constants::COOL_SYS_SEMPHR_IDX], pdMS_TO_TICKS(Constants::THREAD_BLOCK_DURATION_MS)) == pdFALSE) return;
 
 			this->fd_inputs = {
 					read_fault_sensors(Constants::SENSOR_PINS, Constants::NUM_SUBSYSTEMS)[0],
