@@ -11,8 +11,7 @@
 #include "main.h"
 #include <cstdint>
 #include "stm32f4xx_hal.h"
-#include "stm32f4xx_hal_uart.h"
-#include "stm32f446xx.h"
+
 
 // File containing all functions for reading input signals.
 

@@ -12,6 +12,7 @@
 #include "task.h"
 #include "semphr.h"
 
+
 // Interface file for the Charging Stage Thread from the
 // SW Architecture Block Diagram
 namespace ChargingStage {
