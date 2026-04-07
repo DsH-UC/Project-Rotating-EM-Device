@@ -11,6 +11,8 @@
 #include "main.h"
 #include <cstdint>
 #include "stm32f4xx_hal.h"
+#include <cstdio>
+#include <cstdint>
 
 
 // File containing all functions for reading input signals.
@@ -49,6 +51,9 @@ namespace IO_Handler {
 		// Output signal sources to the UI. It contains a Bluetooth receiver to receive packets of sensor data.
 		// Sensor reading functions are placed here.
 
+		// Bluetooth functions
+		void send_bluetooth_packet();
+
 	private:
 		// Member variables
 		QueueHandle_t m_selected_UI_display_sensors;
@@ -56,6 +61,20 @@ namespace IO_Handler {
 
 		uint8_t m_is_launch_button_pressed_rx;
 		//uint8_t m_is_fan_toggle_pressed_rx;
+
+		uint16_t* m_adc_buffer;
+
+		void init_adc(void);
+
+		// Sensor Streaming Pipeline Block member variables and functions
+		QueueHandle_t m_packet_queue; // Thread safe queue
+		TaskHandle_t packet_queue_write_task_handle; // Enqueue thread
+		TaskHandle_t packet_queue_read_task_handle; // Dequeue thread
+
+		void start_packet_rdwr_threads(void);
+		void packet_queue_write_task(void* pv_parameters);
+		void packet_queue_read_task(void* pv_parameters);
+		void compress_packet(void* packet_data);
 
 	};
 
