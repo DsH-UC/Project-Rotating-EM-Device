@@ -13,8 +13,13 @@
 #include "semphr.h"
 #include "ThreadPriorityTable.hpp"
 
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx_hal_uart.h"
+#include "stm32f446xx.h"
+
 // Interface file for the Rotating Block Thread from the
 // SW Architecture Block Diagram
+
 namespace RotatingBlock {
 
 	class RotatingBlock {
@@ -30,6 +35,8 @@ namespace RotatingBlock {
 
 		// Create Cooling System Thread in FreeRTOS
 		void startRotatingBlockSubsystemThread(void);
+
+		void UI_LaunchButtonISR(void* pvParameters);
 
 	private:
 		struct RotatingBlockInputs {
@@ -49,6 +56,8 @@ namespace RotatingBlock {
 		int numUsedRails; // Number of currently hot rails. Dependent input
 		RotatingBlockInputs rbInputs;
 		RotatingBlockGPIO rbGPIO;
+		uint8_t m_is_launch_button_pressed_rx;
+
 
 		// Store thread in cpp file
 		TaskHandle_t rbTaskHandle;
@@ -62,7 +71,6 @@ namespace RotatingBlock {
 		float readRotaryEncoder(int gpioPin);
 		bool readUI(int gpioPin);
 		void rotatingBlockTask(void* pvParameters);
-		void UI_LaunchButtonISR(void* pvParameters);
 
 		// Helper blocks
 		bool toggleMotorPWM(bool enPWM); // TODO

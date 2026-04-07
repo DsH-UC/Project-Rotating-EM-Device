@@ -18,6 +18,10 @@
 #define ROTARY_ENC_REF_ANGLE 90.0f
 #define EPSILON 1e-4f
 
+extern "C" {
+	extern UART_HandleTypeDef huart4; // Launch button UART handle
+}
+
 namespace RotatingBlock {
 
 	// Internal namespace for compile time constants
@@ -25,7 +29,7 @@ namespace RotatingBlock {
 
 	}
 
-	RotatingBlock& RotatingBlock::getInstance(){
+	static RotatingBlock& RotatingBlock::getInstance(){
 		static RotatingBlock instance;
 		return instance;
 	}
@@ -79,6 +83,10 @@ namespace RotatingBlock {
 
 		// Preepmt thread from Running State -> Ready state
 		xSemaphoreGiveFromISR(this->uiLaunchButtonSemaphore, &xHigherPriorityTaskwoken);
+
+		// Listen for a byte, then trigger interrupt for non-blocking read
+		HAL_UART_Receive_IT(&huart4, this->m_is_launch_button_pressed_rx, sizeof(uint8_t));
+
 		portYIELD_FROM_ISR(xHigherPriorityTaskwoken);
 	}
 

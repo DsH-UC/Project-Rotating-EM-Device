@@ -55,7 +55,8 @@ namespace IO_Handler {
 		QueueHandle_t m_selected_UI_display_sensors;
 		uint64_t* m_bluetooth_stream_packet; // Turn into function to create the packet instead of defining this variable.
 
-		uint8_t m_is_launch_buttons_pressed_rx;
+		uint8_t m_is_launch_button_pressed_rx;
+		//uint8_t m_is_fan_toggle_pressed_rx;
 
 	};
 

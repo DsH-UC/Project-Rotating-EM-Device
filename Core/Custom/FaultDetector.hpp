@@ -25,6 +25,11 @@ namespace FaultDetector { // TODO
 		FaultDetector(FaultDetector&&) = delete;
 		FaultDetector& operator = (FaultDetector&&) = delete;
 
+		// Input capture event ISRs based on fault detection circuit under voltage
+		void chr_stg_fault_ISR(void* pv_parameters);
+		void rb_fault_ISR(void* pv_parameters);
+		void cool_sys_fault_ISR(void* pv_parameters);
+
 		bool is_reset_all_subsystem_state_machines(bool* is_fault);
 		void start_fault_detector_subsystem_thread(void);
 	private:
@@ -54,9 +59,6 @@ namespace FaultDetector { // TODO
 		float* read_fault_sensors(int* sensor_pins, int num_sensors);
 		void fault_detector_task(void* pv_parameters);
 
-		void chr_stg_fault_ISR(void* pv_parameters);
-		void rb_fault_ISR(void* pv_parameters);
-		void cool_sys_fault_ISR(void* pv_parameters);
 	};
 }
 

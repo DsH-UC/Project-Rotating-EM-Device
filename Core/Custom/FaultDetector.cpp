@@ -29,7 +29,7 @@ namespace FaultDetector {
 		constexpr int SENSOR_PINS[] = {12,13,14};
 	}
 
-	FaultDetector& FaultDetector::get_instance(){
+	static FaultDetector& FaultDetector::get_instance(){
 		static FaultDetector instance;
 		return instance;
 	}

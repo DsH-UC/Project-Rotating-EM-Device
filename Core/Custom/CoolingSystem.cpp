@@ -6,99 +6,86 @@
  */
 
 #include "CoolingSystem.hpp"
-
 #include "ThreadPriorityTable.hpp"
-#define STACK_SIZE 512 //bytes
-#define COOLING_SYS_THRESHOLD 40 // Deg. Celsius
-#define STATE_FAN_OFF false
-#define STATE_FAN_ON true
-#define THREAD_BLOCK_DURATION_MS 50
 
 namespace CoolingSystem {
 
-	// Internal namespace for constants
+	// Internal namespace for compile time constants
 	namespace Constants {
-
+		constexpr int STACK_SIZE = 512; // bytes
+		constexpr int COOLING_SYS_THRESHOLD = 40; // Deg. Celsius
+		constexpr bool STATE_FAN_OFF = false;
+		constexpr bool STATE_FAN_ON = true;
+		constexpr int THREAD_BLOCK_DURATION_MS = 50;
 	}
-	struct CoolingSystemInputs {
-		float railTemp;
-		bool uiFanToggle;
-		bool reset;
-	};
 
-	struct CoolingSystemGPIO {
-		int pin_NTC_Thermistor; // ADC Channel
-		int pin_HC_05_UART_RX;
-	};
+	static CoolingSystem& CoolingSystem::get_instance(){
+		static CoolingSystem instance;
+		return instance;
+	}
 
-	// Store thread in cpp file
-	static TaskHandle_t csTaskHandle = nullptr;
-	static SemaphoreHandle_t uiFanToggleSemaphore = nullptr; // Semaphore given by ISR
-
-
-	// Cooling System FSM
-	// Inputs: Rail Temp Sensor (float), UI Fan Toggle (bool), Reset (bool)
-	// Outputs: Is_Fan_On (bool)
+	CoolingSystem::CoolingSystem() { printf("Cooling System Subsystem online.\n"); }
+	CoolingSystem::~CoolingSystem() { printf("Cooling System Subsystem offline.\n"); }
 
 	// Helper read functions
-	static float readSensor(int gpioPin){ // TODO
+	float CoolingSystem::read_sensor(int gpio_pin){ // TODO
 		// 12-bit ADC, mask with & 0xFFF
 		return 1.0;
 	};
 
-	static bool readUI(int gpioPin){ // TODO
+	bool CoolingSystem::read_ui(int gpio_pin){ // TODO
 		return false;
 	}
 
 	// Thread instructions
-	static void coolingSystemTask(void* pvParameters){
+	void CoolingSystem::cooling_system_task(void* pv_parameters){
 
 		// Cooling System FSM Implementation:
-		bool state = STATE_FAN_OFF; // Initial state
+		bool state = Constants::STATE_FAN_OFF; // Initial state
 
 		while(true){
-			if(xSemaphoreTake(uiFanToggleSemaphore, pdMS_TO_TICKS(THREAD_BLOCK_DURATION_MS))==pdFALSE) return;
+			if(xSemaphoreTake(this->ui_fan_toggle_semaphore, pdMS_TO_TICKS(Constants::THREAD_BLOCK_DURATION_MS))==pdFALSE) return;
 
-			CoolingSystemInputs* coolingSystemInputs = {readSensor(0),readUI(0),false};
+			cooling_system_inputs_t* cooling_system_inputs = {read_sensor(0),read_ui(0),false};
 
 			// State transition boolean functions
-			bool y = ((int)(coolingSystemInputs->railTemp) >= COOLING_SYSTEM_THRESHOLD) ||
-					coolingSystem->uiFanToggle;
+			bool y = ((int)(cooling_system_inputs->rail_temp) >= Constants::COOLING_SYSTEM_THRESHOLD) ||
+					cooling_system_inputs->ui_fan_toggle;
 
-			bool z = ((int)(coolingSystemInputs->railTemp) < COOLING_SYSTEM_THRESHOLD) ||
-								coolingSystem->uiFanToggle;
+			bool z = ((int)(cooling_system_inputs->rail_temp) < Constants::COOLING_SYSTEM_THRESHOLD) ||
+								cooling_system_inputs->ui_fan_toggle;
 
 			// Mutually exclusive state transitions from both states. No need for else statement
-			if(state == STATE_FAN_OFF && y) state = STATE_FAN_ON;
-			if(state == STATE_FAN_OFF && !y) state = STATE_FAN_OFF;
-			if(state == STATE_FAN_ON && z) state = STATE_FAN_OFF;
-			if(state == STATE_FAN_ON && !z) state = STATE_FAN_ON;
+			if(state == Constants::STATE_FAN_OFF && y) state = Constants::STATE_FAN_ON;
+			if(state == Constants::STATE_FAN_OFF && !y) state = Constants::STATE_FAN_OFF;
+			if(state == Constants::STATE_FAN_ON && z) state = Constants::STATE_FAN_OFF;
+			if(state == Constants::STATE_FAN_ON && !z) state = Constants::STATE_FAN_ON;
 
 			// Thread from Running state -> Blocked state for 50 ms
-			vTaskDelay(pdMS_TO_TICKS(THREAD_BLOCK_DURATION_MS));
+			vTaskDelay(pdMS_TO_TICKS(Constants::THREAD_BLOCK_DURATION_MS));
 
 		}
 	}
 
 	// UI Fan Button ISR
-	static void UI_FanToggleISR(void* pvParameters){ // TODO: Still need to get the interrupt condition and clear it
+	void CoolingSystem::ui_fan_toggle_ISR(void* pv_parameters){ // TODO: Still need to get the interrupt condition and clear it
 
 		BaseType_t xHigherPriorityTaskWoken = pdFalse;
 
 		// Preepmt thread from Running State -> Ready state
-		xSemaphoreGiveFromISR(uiFanToggleSemaphore, &xHigherPriorityTaskWoken);
+		xSemaphoreGiveFromISR(ui_fan_toggle_semaphore, &xHigherPriorityTaskWoken);
 		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 	}
 
-	void startCoolingSubsystemThread(void) {
-		uiFanToggleSemaphore = xSemaphoreCreateBinary();
+	void CoolingSystem::start_cooling_subsystem_thread(void) {
+		this->ui_fan_toggle_semaphore = xSemaphoreCreateBinary();
 		xTaskCreate(
-				coolingSystemTask, // Thread function
+				cooling_system_task, // Thread function
 				"Cooling System Thread",
-				STACK_SIZE, //
+				Constants::STACK_SIZE, //
 				nullptr, // pvParameters
 				ThreadPriorityTable::COOLING_SYS_PRIORITY, //Thread Priority
-				&csTaskHandle
+				&(this->cs_task_handle)
 		);
 	}
 }
