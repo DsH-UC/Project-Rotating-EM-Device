@@ -25,7 +25,7 @@ namespace RotatingBlock {
 	class RotatingBlock {
 	public:
 		// Access function for singleton
-		static RotatingBlock& getInstance();
+		static RotatingBlock& get_instance();
 
 		// Disable copying
 		RotatingBlock(const RotatingBlock&) = delete;
@@ -34,15 +34,15 @@ namespace RotatingBlock {
 		RotatingBlock& operator = (RotatingBlock&&) = delete;
 
 		// Create Cooling System Thread in FreeRTOS
-		void startRotatingBlockSubsystemThread(void);
+		void start_rotating_block_subsystem_thread(void);
 
-		void UI_LaunchButtonISR(void* pvParameters);
+		void ui_launch_button_ISR(void* pv_parameters);
 
 	private:
 		struct RotatingBlockInputs {
-			float railTemp;
-			float rotaryEncoderAngle;
-			bool uiLaunchButton;
+			float rail_temp;
+			float rotary_encoder_angle;
+			bool ui_launch_button;
 			bool reset;
 		};
 
@@ -53,29 +53,29 @@ namespace RotatingBlock {
 			int pin_Motor_IGBT_Gate;
 		};
 
-		int numUsedRails; // Number of currently hot rails. Dependent input
-		RotatingBlockInputs rbInputs;
-		RotatingBlockGPIO rbGPIO;
+		int m_num_used_rails; // Number of currently hot rails. Dependent input
+		RotatingBlockInputs m_rb_inputs;
+		RotatingBlockGPIO m_rb_GPIO;
 		uint8_t m_is_launch_button_pressed_rx;
 
 
 		// Store thread in cpp file
-		TaskHandle_t rbTaskHandle;
-		SemaphoreHandle_t uiLaunchButtonSemaphore;
+		TaskHandle_t m_rb_task_handle;
+		SemaphoreHandle_t m_ui_launch_button_semaphore;
 
 		RotatingBlock();
 		~RotatingBlock();
 
 		// Main SM block
-		float readTempSensor(int gpioPin); // TODO
-		float readRotaryEncoder(int gpioPin);
-		bool readUI(int gpioPin);
-		void rotatingBlockTask(void* pvParameters);
+		float read_temp_sensor(int gpio_pin); // TODO
+		float read_rotary_encoder(int gpio_pin);
+		bool read_ui(int gpio_pin);
+		void rotating_block_task(void* pv_parameters);
 
 		// Helper blocks
-		bool toggleMotorPWM(bool enPWM); // TODO
-		float feedbackController(float* rotataryEncoderBuf, int n);
-		void incrementRailCounter(bool enRailCounter); // TODO
+		bool toggle_motor_PWM(bool en_PWM); // TODO
+		float feedback_controller(float* rotatary_enc_buf, int n);
+		void increment_rail_counter(bool en_rail_counter); // TODO
 
 	};
 }
