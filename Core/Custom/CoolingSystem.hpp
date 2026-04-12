@@ -48,6 +48,8 @@ namespace CoolingSystem {
 		TaskHandle_t cs_task_handle = nullptr;
 		SemaphoreHandle_t ui_fan_toggle_semaphore = nullptr; // Semaphore given by ISR
 
+		cooling_system_inputs_t* m_cooling_system_inputs;
+
 		// Cooling System FSM
 		// Inputs: Rail Temp Sensor (float), UI Fan Toggle (bool), Reset (bool)
 		// Outputs: Is_Fan_On (bool)

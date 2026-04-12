@@ -67,18 +67,18 @@ namespace ChargingStage {
 
 			if(xSemaphoreTake(this->m_ui_launch_button_semaphore,pdMS_TO_TICKS(Constants::THREAD_BLOCK_DURATION_MS)) == pdFALSE) return;
 
-			charging_stage_inputs_t* charging_stage_inputs = {
+			this->m_charging_stage_inputs = {
 					read_sensor(0),
 					read_ui(0),
 					read_rot_block_is_motor_aligned(),
-					read_rot_block_num_consumed_rails() ,
+					read_rot_block_num_consumed_rails(),
 					false
 			};
 
 			// State transition boolean functions
-			bool x0 = ((int)(charging_stage_inputs->cap_voltage)) >= Constants::CAP_VOLTAGE_THRESHOLD_MAX;
-			bool x1 = ((int)charging_stage_inputs->cap_voltage) >= Constants::CAP_VOLTAGE_THRESHOLD_MIN;
-			bool y = charging_stage_inputs->ui_launch_button && charging_stage_inputs->gate_launch < Constants::NUM_RAIL_PAIRS;
+			bool x0 = ((int)(this->m_charging_stage_inputs->cap_voltage)) >= Constants::CAP_VOLTAGE_THRESHOLD_MAX;
+			bool x1 = ((int)this->m_charging_stage_inputs->cap_voltage) >= Constants::CAP_VOLTAGE_THRESHOLD_MIN;
+			bool y = this->m_charging_stage_inputs->ui_launch_button && this->m_charging_stage_inputs->gate_launch < Constants::NUM_RAIL_PAIRS;
 
 			// Mutually exclusive state transitions from each state. No need for else statement
 			if(state == Constants::STATE_DISCHARGED && !y) state = Constants::STATE_DISCHARGED;

@@ -55,6 +55,8 @@ namespace ChargingStage {
 			TaskHandle_t m_cs_task_handle = nullptr;
 			SemaphoreHandle_t m_ui_launch_button_semaphore = nullptr;
 
+			charging_stage_inputs_t* m_charging_stage_inputs;
+
 			void charging_stage_task(void* pv_parameters);
 
 	};

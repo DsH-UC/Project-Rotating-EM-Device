@@ -41,14 +41,14 @@ namespace RotatingBlock {
 		void ui_launch_button_ISR(void* pv_parameters);
 
 	private:
-		struct RotatingBlockInputs {
+		struct rotating_block_inputs_t {
 			float rail_temp;
 			float rotary_encoder_angle;
 			bool ui_launch_button;
 			bool reset;
 		};
 
-		struct RotatingBlockGPIO {
+		struct rotating_block_GPIO_t {
 			int pin_NTC_Thermistor; // ADC Channel
 			int pin_Rotary_Encoder; // May need multiple depending on serial comms protocol
 			int pin_HC_05_UART_RX;
@@ -56,8 +56,8 @@ namespace RotatingBlock {
 		};
 
 		int m_num_used_rails; // Number of currently hot rails. Dependent input
-		RotatingBlockInputs m_rb_inputs;
-		RotatingBlockGPIO m_rb_GPIO;
+		rotating_block_inputs_t m_rb_inputs;
+		rotating_block_GPIO_t m_rb_GPIO;
 		uint8_t m_is_launch_button_pressed_rx;
 
 		// FB Controller

@@ -46,14 +46,14 @@ namespace CoolingSystem {
 		while(true){
 			if(xSemaphoreTake(this->ui_fan_toggle_semaphore, pdMS_TO_TICKS(Constants::THREAD_BLOCK_DURATION_MS))==pdFALSE) return;
 
-			cooling_system_inputs_t* cooling_system_inputs = {read_sensor(0),read_ui(0),false};
+			this->m_cooling_system_inputs = {read_sensor(0),read_ui(0),false};
 
 			// State transition boolean functions
-			bool y = ((int)(cooling_system_inputs->rail_temp) >= Constants::COOLING_SYSTEM_THRESHOLD) ||
-					cooling_system_inputs->ui_fan_toggle;
+			bool y = ((int)(this->m_cooling_system_inputs->rail_temp) >= Constants::COOLING_SYSTEM_THRESHOLD) ||
+					this->m_cooling_system_inputs->ui_fan_toggle;
 
-			bool z = ((int)(cooling_system_inputs->rail_temp) < Constants::COOLING_SYSTEM_THRESHOLD) ||
-								cooling_system_inputs->ui_fan_toggle;
+			bool z = ((int)(this->m_cooling_system_inputs->rail_temp) < Constants::COOLING_SYSTEM_THRESHOLD) ||
+								this->m_cooling_system_inputs->ui_fan_toggle;
 
 			// Mutually exclusive state transitions from both states. No need for else statement
 			if(state == Constants::STATE_FAN_OFF && y) state = Constants::STATE_FAN_ON;
