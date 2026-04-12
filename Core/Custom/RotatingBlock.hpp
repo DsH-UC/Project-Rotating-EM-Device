@@ -79,7 +79,7 @@ namespace RotatingBlock {
 		// Helper blocks
 		bool toggle_motor_PWM(bool en_PWM); // TODO
 		float32_t get_feedback_controller(float* rotatary_enc_buf, int n);
-		void increment_rail_counter(bool en_rail_counter); // TODO
+		void increment_rail_counter(bool en_rail_counter);
 
 	};
 }

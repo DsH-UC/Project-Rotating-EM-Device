@@ -26,6 +26,7 @@ namespace RotatingBlock {
 		constexpr float ROTARY_ENC_REF_ANGLE = 90.0f;
 		constexpr float EPSILON = 1e-4f;
 
+		// Motor FB PI Controller constants
 		constexpr float32_t FB_CONTROLLER_KP = 0.5f;
 		constexpr float32_t FB_CONTROLLER_KI = 0.1f;
 	}
@@ -102,7 +103,7 @@ namespace RotatingBlock {
 	}
 
 	float32_t RotatingBlock::get_feedback_controller(float32_t setpoint, float32_t fb_output){ // TODO
-		float32_t error = setpoitn - fb_output; // setpoint - i/p from fb output
+		float32_t error = setpoint - fb_output; // setpoint - i/p from fb output
 		return arm_pid_f32(&(this->m_motor_fb_controller), error);
 	}
 
