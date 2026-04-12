@@ -21,9 +21,9 @@ namespace IO_Handler {
 	// TODO 4/6:
 	// Reading in UI + sensors into interrupt semaphores + DMA buffer -> route to SM's + BT stream TX
 		// Prototype BT stream and packet structure
-	// Replace SM computation w/ DSP computation
 	// Route reset inputs for SMs from FaultDetector
 	// Select and program digital filters + FB controller using DSP
+
 	// Charging Stage + Cooling System implementations to use C++ classes
 		// Add m_ prefix for member variable to classes
 		// Arrange Custom cpp/hpp files into organized subfolders w/ good naming

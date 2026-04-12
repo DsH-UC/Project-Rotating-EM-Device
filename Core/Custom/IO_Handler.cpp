@@ -19,8 +19,8 @@ extern "C" {
 	// UI input CPU interrupt callback
    void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 		if (huart->Instance == UART4) { // HC-05 UART
-			RotatingBlock::RotatingBlock::getInstance().UI_LaunchButtonISR();
-			//ChargingStage::ChargingStage::get_instance().UI_LaunchButtonISR();
+			RotatingBlock::RotatingBlock::get_instance().ui_launch_button_ISR();
+			ChargingStage::ChargingStage::get_instance().ui_launch_button_ISR();
 			CoolingSystem::CoolingSystem::get_instance().ui_fan_toggle_ISR();
 		}
 	}
