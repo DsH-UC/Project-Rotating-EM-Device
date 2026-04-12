@@ -25,6 +25,9 @@ namespace RotatingBlock {
 		constexpr int NUM_TOTAL_RAILS = 6;
 		constexpr float ROTARY_ENC_REF_ANGLE = 90.0f;
 		constexpr float EPSILON = 1e-4f;
+
+		constexpr float32_t FB_CONTROLLER_KP = 0.5f;
+		constexpr float32_t FB_CONTROLLER_KI = 0.1f;
 	}
 
 	static RotatingBlock& RotatingBlock::get_instance(){
@@ -88,10 +91,21 @@ namespace RotatingBlock {
 		portYIELD_FROM_ISR(xHigherPriorityTaskwoken);
 	}
 
-	float RotatingBlock::feedback_controller(float* rotatary_enc_buf, int n){ // TODO
+	void RotatingBlock::init_feedback_controller(){
+			// Set Kp and Ki for PID constants
+		 	this->m_motor_fb_controller.Kp = Constants::FB_CONTROLLER_KP;
+		 	this->m_motor_fb_controller.Ki = Constants::FB_CONTROLLER_KI;
+		 	this->m_motor_fb_controller.Kd= 0.0f;
 
-		return 0.0;
+		 	int32_t reset_state_flag = 1;
+		    arm_pid_init_f32(&(this->m_motor_fb_controller), reset_state_flag); // 1 resets the state variables to zero
 	}
+
+	float32_t RotatingBlock::get_feedback_controller(float32_t setpoint, float32_t fb_output){ // TODO
+		float32_t error = setpoitn - fb_output; // setpoint - i/p from fb output
+		return arm_pid_f32(&(this->m_motor_fb_controller), error);
+	}
+
 
 	bool RotatingBlock::toggle_motor_PWM(bool en_PWM) { // TODO
 m		int pwm = this->m_rb_GPIO.pin_Motor_IGBT_Gate;

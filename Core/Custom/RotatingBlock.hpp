@@ -16,6 +16,8 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_uart.h"
 #include "stm32f446xx.h"
+#include "arm_math.h"
+#include <cstdint>
 
 // Interface file for the Rotating Block Thread from the
 // SW Architecture Block Diagram
@@ -58,6 +60,8 @@ namespace RotatingBlock {
 		RotatingBlockGPIO m_rb_GPIO;
 		uint8_t m_is_launch_button_pressed_rx;
 
+		// FB Controller
+		arm_pid_instance_f32 m_motor_fb_controller;
 
 		// Store thread in cpp file
 		TaskHandle_t m_rb_task_handle;
@@ -74,7 +78,7 @@ namespace RotatingBlock {
 
 		// Helper blocks
 		bool toggle_motor_PWM(bool en_PWM); // TODO
-		float feedback_controller(float* rotatary_enc_buf, int n);
+		float32_t get_feedback_controller(float* rotatary_enc_buf, int n);
 		void increment_rail_counter(bool en_rail_counter); // TODO
 
 	};
