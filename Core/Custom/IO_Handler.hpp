@@ -22,16 +22,19 @@ namespace IO_Handler {
 	// Reading in UI + sensors into interrupt semaphores + DMA buffer -> route to SM's + BT stream TX
 		// Prototype BT stream and packet structure
 	// Route reset inputs for SMs from FaultDetector
-	// Select and program digital filters + FB controller using DSP
 
-	// Charging Stage + Cooling System implementations to use C++ classes
-		// Add m_ prefix for member variable to classes
-		// Arrange Custom cpp/hpp files into organized subfolders w/ good naming
 	// Comment/Document/Codedocs for C++ files in the Custom folder
 
 	// PyQt + numpy GUI for BT stream receiving and UI button signal transmission for fans+launch
 	// PyQt sensor logging, move this block from the SW arch block diagram MCU to the UI.
 
+	// TODO 4/23
+	// Make static wrapper functions to put into xTaskCreate function name param
+
+	// Select and program digital filters + FB controller using DSP (Done)
+	// Charging Stage + Cooling System implementations to use C++ classes (Done)
+    // Add m_ prefix for member variable to classes
+	// Arrange Custom cpp/hpp files into organized subfolders w/ good naming
 	class IO_Handler {
 	public:
 		// Access function for singleton

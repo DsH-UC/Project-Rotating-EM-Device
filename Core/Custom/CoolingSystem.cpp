@@ -30,7 +30,8 @@ namespace CoolingSystem {
 	// Helper read functions
 	float CoolingSystem::read_sensor(int gpio_pin){ // TODO
 		// 12-bit ADC, mask with & 0xFFF
-		return 1.0;
+		return Thermistor_ReadTempC(uint32_t adc_channel, uint16_t samples);
+		//return 1.0;
 	};
 
 	bool CoolingSystem::read_ui(int gpio_pin){ // TODO

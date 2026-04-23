@@ -12,8 +12,10 @@
 #include "task.h"
 #include "semphr.h"
 
-// Interface file for the Cooling System Thread from the
-// SW Architecture Block Diagram
+/*
+Interface file for the Cooling System Thread from the
+SW Architecture Block Diagram
+*/
 namespace CoolingSystem {
 
 	class CoolingSystem {
@@ -30,9 +32,12 @@ namespace CoolingSystem {
 		// Create Cooling System Thread in FreeRTOS
 		void start_cooling_subsystem_thread(void);
 
+		// Read UI Button input for enabling and disabling the fans
 		void ui_fan_toggle_ISR(void* pv_parameters);
 
 	private:
+
+		//
 		struct cooling_system_inputs_t {
 			float rail_temp;
 			bool ui_fan_toggle;

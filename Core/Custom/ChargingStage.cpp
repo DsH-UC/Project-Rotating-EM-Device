@@ -43,7 +43,12 @@ namespace ChargingStage {
 	// Helper read functions
 	float ChargingStage::read_sensor(int gpio_pin){ //TODO
 		// 12-bit ADC, mask w/ & 0xFFF
-		return 1.0;
+		return VoltageSense_DividerToSourceVoltage(
+				VoltageSense_ReadVoltage(uint32_t adc_channel, uint16_t samples),
+				float r_top,
+				float r_bottom
+				);
+		//return 1.0;
 	}
 
 	bool ChargingStage::read_ui(int gpio_pin){ //TODO

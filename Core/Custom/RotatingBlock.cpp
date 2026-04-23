@@ -40,6 +40,7 @@ namespace RotatingBlock {
 	RotatingBlock::~RotatingBlock() { printf("RB Subsystem offline.\n"); }
 
 	float RotatingBlock::read_temp_sensor(int gpio_pin){ // TODO
+		//return Thermistor_ReadTempC(uint32_t adc_channel, uint16_t samples);
 		return 0.0;
 	}
 
