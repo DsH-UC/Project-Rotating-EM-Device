@@ -1,0 +1,5 @@
+../Core/Src/CoolingSystemTest.cpp:13:1:CoolingSystemTest::CoolingSystemTest()	16	static
+../Core/Src/CoolingSystemTest.cpp:14:1:CoolingSystemTest::~CoolingSystemTest()	16	static
+../Core/Src/CoolingSystemTest.cpp:16:6:static void CoolingSystemTest::run_cooling_system_test_task(void*)	16	static
+../Core/Src/CoolingSystemTest.cpp:22:6:static void CoolingSystemTest::run_cooling_system_test_sequence()	112	static
+../Core/Src/CoolingSystemTest.cpp:99:6:static void CoolingSystemTest::init_cooling_system_test_thread(uint16_t, UBaseType_t)	24	static

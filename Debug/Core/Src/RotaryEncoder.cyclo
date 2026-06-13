@@ -1,0 +1,11 @@
+../Core/Src/RotaryEncoder.cpp:17:1:RotaryEncoder::RotaryEncoder()	1
+../Core/Src/RotaryEncoder.cpp:25:16:static RotaryEncoder& RotaryEncoder::get_instance()	3
+../Core/Src/RotaryEncoder.cpp:30:6:void RotaryEncoder::init(TIM_HandleTypeDef*)	1
+../Core/Src/RotaryEncoder.cpp:42:6:void RotaryEncoder::start_thread(uint16_t, UBaseType_t)	1
+../Core/Src/RotaryEncoder.cpp:46:6:static void RotaryEncoder::runStatic(void*)	1
+../Core/Src/RotaryEncoder.cpp:48:6:void RotaryEncoder::task_loop()	2
+../Core/Src/RotaryEncoder.cpp:76:7:float RotaryEncoder::get_angle_degrees()	3
+../Core/Src/RotaryEncoder.cpp:89:9:int32_t RotaryEncoder::get_angle_centi_degrees()	3
+../Core/Src/RotaryEncoder.cpp:102:6:bool RotaryEncoder::is_rail_aligned(uint8_t, int32_t)	5
+../Core/Src/RotaryEncoder.cpp:120:9:uint8_t RotaryEncoder::get_rail_index_zero_based()	1
+../Core/Src/RotaryEncoder.cpp:133:6:void RotaryEncoder::set_zero()	2

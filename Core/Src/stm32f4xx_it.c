@@ -57,10 +57,9 @@
 /* External variables --------------------------------------------------------*/
 extern DMA_HandleTypeDef hdma_adc1;
 extern ADC_HandleTypeDef hadc1;
-extern UART_HandleTypeDef huart4;
-extern UART_HandleTypeDef huart1;
+extern UART_HandleTypeDef huart5;
 extern UART_HandleTypeDef huart2;
-extern TIM_HandleTypeDef htim8;
+extern TIM_HandleTypeDef htim6;
 
 /* USER CODE BEGIN EV */
 
@@ -165,6 +164,20 @@ void DebugMon_Handler(void)
 /******************************************************************************/
 
 /**
+  * @brief This function handles EXTI line 4 interrupt.
+  */
+void EXTI4_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI4_IRQn 0 */
+
+  /* USER CODE END EXTI4_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(IR_BRK_START_Pin);
+  /* USER CODE BEGIN EXTI4_IRQn 1 */
+
+  /* USER CODE END EXTI4_IRQn 1 */
+}
+
+/**
   * @brief This function handles ADC1, ADC2 and ADC3 interrupts.
   */
 void ADC_IRQHandler(void)
@@ -179,17 +192,19 @@ void ADC_IRQHandler(void)
 }
 
 /**
-  * @brief This function handles USART1 global interrupt.
+  * @brief This function handles EXTI line[9:5] interrupts.
   */
-void USART1_IRQHandler(void)
+void EXTI9_5_IRQHandler(void)
 {
-  /* USER CODE BEGIN USART1_IRQn 0 */
+  /* USER CODE BEGIN EXTI9_5_IRQn 0 */
 
-  /* USER CODE END USART1_IRQn 0 */
-  HAL_UART_IRQHandler(&huart1);
-  /* USER CODE BEGIN USART1_IRQn 1 */
+  /* USER CODE END EXTI9_5_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(IR_BRK_END_Pin);
+  HAL_GPIO_EXTI_IRQHandler(LAUNCH_BTN_TEST_PIN_Pin);
+  HAL_GPIO_EXTI_IRQHandler(FAN_BTN_TEST_PIN_Pin);
+  /* USER CODE BEGIN EXTI9_5_IRQn 1 */
 
-  /* USER CODE END USART1_IRQn 1 */
+  /* USER CODE END EXTI9_5_IRQn 1 */
 }
 
 /**
@@ -207,31 +222,31 @@ void USART2_IRQHandler(void)
 }
 
 /**
-  * @brief This function handles TIM8 update interrupt and TIM13 global interrupt.
+  * @brief This function handles UART5 global interrupt.
   */
-void TIM8_UP_TIM13_IRQHandler(void)
+void UART5_IRQHandler(void)
 {
-  /* USER CODE BEGIN TIM8_UP_TIM13_IRQn 0 */
+  /* USER CODE BEGIN UART5_IRQn 0 */
 
-  /* USER CODE END TIM8_UP_TIM13_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim8);
-  /* USER CODE BEGIN TIM8_UP_TIM13_IRQn 1 */
+  /* USER CODE END UART5_IRQn 0 */
+  HAL_UART_IRQHandler(&huart5);
+  /* USER CODE BEGIN UART5_IRQn 1 */
 
-  /* USER CODE END TIM8_UP_TIM13_IRQn 1 */
+  /* USER CODE END UART5_IRQn 1 */
 }
 
 /**
-  * @brief This function handles UART4 global interrupt.
+  * @brief This function handles TIM6 global interrupt and DAC1, DAC2 underrun error interrupts.
   */
-void UART4_IRQHandler(void)
+void TIM6_DAC_IRQHandler(void)
 {
-  /* USER CODE BEGIN UART4_IRQn 0 */
+  /* USER CODE BEGIN TIM6_DAC_IRQn 0 */
 
-  /* USER CODE END UART4_IRQn 0 */
-  HAL_UART_IRQHandler(&huart4);
-  /* USER CODE BEGIN UART4_IRQn 1 */
+  /* USER CODE END TIM6_DAC_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim6);
+  /* USER CODE BEGIN TIM6_DAC_IRQn 1 */
 
-  /* USER CODE END UART4_IRQn 1 */
+  /* USER CODE END TIM6_DAC_IRQn 1 */
 }
 
 /**

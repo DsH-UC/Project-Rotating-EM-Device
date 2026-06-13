@@ -1,0 +1,6 @@
+../Core/Src/BlinkTask.cpp:11:1:BlinkTask::~BlinkTask()	16	static
+../Core/Src/BlinkTask.cpp:15:1:BlinkTask::BlinkTask(GPIO_TypeDef*, uint16_t, uint32_t)	24	static
+../Core/Src/BlinkTask.cpp:18:6:void BlinkTask::start(const char*, uint16_t, UBaseType_t)	32	static
+../Core/Src/BlinkTask.cpp:22:6:static void BlinkTask::runStatic(void*)	16	static
+../Core/Src/BlinkTask.cpp:27:6:void BlinkTask::run()	16	static
+../Core/Src/BlinkTask.cpp:36:6:void print_data_from_ext_thread(char*, int, uint16_t)	24	static

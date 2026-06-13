@@ -1,0 +1,17 @@
+C:\ST\STM32CubeIDE_2.0.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.100.202509120712\tools\bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include/c++/13.3.1/cmath:1122:3:constexpr bool std::isfinite(float)	1
+../Core/Src/Thermistor2.cpp:26:10:void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef*)	4
+../Core/Src/Thermistor2.cpp:42:1:Thermistor::Thermistor(ADC_HandleTypeDef*, uint32_t)	1
+../Core/Src/Thermistor2.cpp:49:13:static Thermistor& Thermistor::get_instance(ADC_HandleTypeDef*, uint32_t)	3
+../Core/Src/Thermistor2.cpp:54:6:void Thermistor::initThermistorThread(uint32_t, UBaseType_t)	1
+../Core/Src/Thermistor2.cpp:58:6:void Thermistor::run()	3
+../Core/Src/Thermistor2.cpp:88:6:static void Thermistor::taskEntry(void*)	1
+../Core/Src/Thermistor2.cpp:93:7:float Thermistor::Thermistor_CountsToVoltage(uint16_t)	1
+../Core/Src/Thermistor2.cpp:97:7:float Thermistor::Thermistor_VoltageToResistance(float)	3
+../Core/Src/Thermistor2.cpp:107:7:float Thermistor::Thermistor_ResistanceToTempC(float)	4
+../Core/Src/Thermistor2.cpp:117:7:float Thermistor::Thermistor_ReadTempC(uint32_t)	6
+../Core/Src/Thermistor2.cpp:130:10:uint16_t Thermistor::Thermistor_ReadRawAverage(uint32_t)	5
+../Core/Src/Thermistor2.cpp:144:6:void Thermistor::Update_All_Channels()	4
+../Core/Src/Thermistor2.cpp:169:10:uint16_t Thermistor::get_raw_average(uint32_t)	1
+../Core/Src/Thermistor2.cpp:173:7:float Thermistor::get_rail_temp_c()	1
+../Core/Src/Thermistor2.cpp:175:7:float Thermistor::get_cap_adc_voltage()	1
+../Core/Src/Thermistor2.cpp:180:7:float Thermistor::get_cap_bank_voltage()	2

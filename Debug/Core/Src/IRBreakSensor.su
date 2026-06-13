@@ -1,0 +1,10 @@
+../Core/Src/IRBreakSensor.cpp:14:1:IRBreakSensor::IRBreakSensor()	16	static
+../Core/Src/IRBreakSensor.cpp:27:16:static IRBreakSensor& IRBreakSensor::get_instance()	8	static
+../Core/Src/IRBreakSensor.cpp:32:6:void IRBreakSensor::init_IR_break_thread(uint16_t, UBaseType_t)	32	static
+../Core/Src/IRBreakSensor.cpp:43:6:static void IRBreakSensor::taskEntry(void*)	16	static
+../Core/Src/IRBreakSensor.cpp:48:6:void IRBreakSensor::init(uint16_t, uint16_t)	16	static
+../Core/Src/IRBreakSensor.cpp:60:6:void IRBreakSensor::on_exti_callback(uint16_t)	32	static,ignoring_inline_asm
+../Core/Src/IRBreakSensor.cpp:87:6:void IRBreakSensor::task_loop()	24	static
+../Core/Src/IRBreakSensor.cpp:148:10:uint32_t IRBreakSensor::get_elapsed_ms() const	24	static
+../Core/Src/IRBreakSensor.cpp:163:7:float IRBreakSensor::get_velocity()	24	static
+../Core/Src/IRBreakSensor.cpp:176:6:void IRBreakSensor::reset()	16	static

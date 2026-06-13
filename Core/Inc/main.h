@@ -59,18 +59,48 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define B1_Pin GPIO_PIN_13
 #define B1_GPIO_Port GPIOC
-#define USART_TX_Pin GPIO_PIN_2
-#define USART_TX_GPIO_Port GPIOA
+#define THERM_ADC_CH_Pin GPIO_PIN_0
+#define THERM_ADC_CH_GPIO_Port GPIOC
+#define CAP_ADC_CH_Pin GPIO_PIN_1
+#define CAP_ADC_CH_GPIO_Port GPIOC
+#define USART_PRINT_Pin GPIO_PIN_2
+#define USART_PRINT_GPIO_Port GPIOA
 #define USART_RX_Pin GPIO_PIN_3
 #define USART_RX_GPIO_Port GPIOA
+#define FAN_SW_PIN_Pin GPIO_PIN_4
+#define FAN_SW_PIN_GPIO_Port GPIOA
 #define LD2_Pin GPIO_PIN_5
 #define LD2_GPIO_Port GPIOA
+#define MOTOR_INB_PIN_Pin GPIO_PIN_5
+#define MOTOR_INB_PIN_GPIO_Port GPIOC
+#define PLACER_INB_PIN_Pin GPIO_PIN_12
+#define PLACER_INB_PIN_GPIO_Port GPIOB
+#define PLACER_INA_PIN_Pin GPIO_PIN_13
+#define PLACER_INA_PIN_GPIO_Port GPIOB
+#define MOTOR_PWM_CH_Pin GPIO_PIN_6
+#define MOTOR_PWM_CH_GPIO_Port GPIOC
+#define LAUNCH_BTN_TEST_PIN_Pin GPIO_PIN_7
+#define LAUNCH_BTN_TEST_PIN_GPIO_Port GPIOC
+#define LAUNCH_BTN_TEST_PIN_EXTI_IRQn EXTI9_5_IRQn
+#define FAN_BTN_TEST_PIN_Pin GPIO_PIN_8
+#define FAN_BTN_TEST_PIN_GPIO_Port GPIOC
+#define FAN_BTN_TEST_PIN_EXTI_IRQn EXTI9_5_IRQn
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
 #define TCK_GPIO_Port GPIOA
-#define SWO_Pin GPIO_PIN_3
-#define SWO_GPIO_Port GPIOB
+#define MOTOR_INA_PIN_Pin GPIO_PIN_3
+#define MOTOR_INA_PIN_GPIO_Port GPIOB
+#define IR_BRK_START_Pin GPIO_PIN_4
+#define IR_BRK_START_GPIO_Port GPIOB
+#define IR_BRK_START_EXTI_IRQn EXTI4_IRQn
+#define IR_BRK_END_Pin GPIO_PIN_5
+#define IR_BRK_END_GPIO_Port GPIOB
+#define IR_BRK_END_EXTI_IRQn EXTI9_5_IRQn
+#define ENC_A_Pin GPIO_PIN_6
+#define ENC_A_GPIO_Port GPIOB
+#define ENC_B_Pin GPIO_PIN_7
+#define ENC_B_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

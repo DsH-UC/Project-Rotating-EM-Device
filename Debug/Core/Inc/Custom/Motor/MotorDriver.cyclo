@@ -1,0 +1,4 @@
+../Core/Inc/Custom/Motor/MotorDriver.cpp:10:6:void MotorDriver::init(TIM_HandleTypeDef*, uint32_t, GPIO_TypeDef*, uint16_t, GPIO_TypeDef*, uint16_t)	1
+../Core/Inc/Custom/Motor/MotorDriver.cpp:27:6:void MotorDriver::forward(uint16_t)	5
+../Core/Inc/Custom/Motor/MotorDriver.cpp:36:6:void MotorDriver::reverse(uint16_t)	5
+../Core/Inc/Custom/Motor/MotorDriver.cpp:45:6:void MotorDriver::stop()	4

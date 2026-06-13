@@ -1,0 +1,23 @@
+../Core/Src/RotatingBlock.cpp:51:24:void __tcf_0()	8	static
+../Core/Src/RotatingBlock.cpp:50:17:static RotatingBlock::RotatingBlock& RotatingBlock::RotatingBlock::get_instance()	8	static
+../Core/Src/RotatingBlock.cpp:55:2:RotatingBlock::RotatingBlock::RotatingBlock()	16	static
+../Core/Src/RotatingBlock.cpp:76:2:RotatingBlock::RotatingBlock::~RotatingBlock()	16	static
+../Core/Src/RotatingBlock.cpp:78:8:float RotatingBlock::RotatingBlock::read_temp_sensor(int)	16	static
+../Core/Src/RotatingBlock.cpp:83:8:float RotatingBlock::RotatingBlock::read_rotary_encoder(int)	16	static
+../Core/Src/RotatingBlock.cpp:87:7:void RotatingBlock::RotatingBlock::rotating_block_task(void*)	72	static
+../Core/Src/RotatingBlock.cpp:288:7:void RotatingBlock::RotatingBlock::ui_launch_button_ISR(uint16_t)	24	static,ignoring_inline_asm
+../Core/Src/RotatingBlock.cpp:313:12:float32_t RotatingBlock::RotatingBlock::get_feedback_controller(float32_t, float32_t)	40	static
+../Core/Src/RotatingBlock.cpp:318:7:void RotatingBlock::RotatingBlock::increment_rail_counter(bool)	24	static
+../Core/Src/RotatingBlock.cpp:325:7:void RotatingBlock::RotatingBlock::start_rotating_block_subsystem_thread()	24	static
+../Core/Src/RotatingBlock.cpp:339:7:static void RotatingBlock::RotatingBlock::runStatic(void*)	16	static
+../Core/Src/RotatingBlock.cpp:343:7:bool RotatingBlock::RotatingBlock::get_motor_pwm_enabled()	16	static
+../Core/Src/RotatingBlock.cpp:344:6:int RotatingBlock::RotatingBlock::get_num_used_rails()	16	static
+../Core/Src/RotatingBlock.cpp:345:7:bool RotatingBlock::RotatingBlock::get_is_motor_aligned()	16	static
+../Core/Src/RotatingBlock.cpp:347:7:void RotatingBlock::RotatingBlock::set_test_mode(bool)	16	static
+../Core/Src/RotatingBlock.cpp:355:7:void RotatingBlock::RotatingBlock::set_mock_inputs(float, float, bool)	24	static
+../Core/Src/RotatingBlock.cpp:365:7:void RotatingBlock::RotatingBlock::simulate_button_press()	16	static
+../Core/Src/RotatingBlock.cpp:369:7:void RotatingBlock::RotatingBlock::init_motor_driver(TIM_HandleTypeDef*, uint32_t, GPIO_TypeDef*, uint16_t, GPIO_TypeDef*, uint16_t)	40	static
+../Core/Src/RotatingBlock.cpp:376:7:void RotatingBlock::RotatingBlock::init_placer_motor_driver(TIM_HandleTypeDef*, uint32_t, GPIO_TypeDef*, uint16_t, GPIO_TypeDef*, uint16_t)	40	static
+../Core/Src/RotatingBlock.cpp:383:7:void RotatingBlock::RotatingBlock::init_feedback_controller()	16	static
+../Core/Src/RotatingBlock.cpp:391:11:uint16_t RotatingBlock::RotatingBlock::compute_motor_duty(float)	40	static
+../Core/Src/RotatingBlock.cpp:408:8:float RotatingBlock::RotatingBlock::get_next_rail_target_angle(float)	32	static

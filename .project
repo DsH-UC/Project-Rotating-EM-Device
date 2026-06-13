@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Project Red F446RE</name>
+	<name>Project Red</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -30,11 +30,4 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>DSP</name>
-			<type>2</type>
-			<location>C:/Users/devhu/STM32Cube/Repository/STM32Cube_FW_F4_V1.28.3/Drivers/CMSIS/DSP</location>
-		</link>
-	</linkedResources>
 </projectDescription>

@@ -1,0 +1,7 @@
+C:\ST\STM32CubeIDE_2.0.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.100.202509120712\tools\bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include/c++/13.3.1/cmath:1122:3:constexpr bool std::isfinite(float)	1
+../Core/Src/UI_TelemetryTransmitter.cpp:25:10:void {anonymous}::split_float(float, int32_t&, int32_t&)	3
+../Core/Src/UI_TelemetryTransmitter.cpp:39:1:UI_TelemetryTransmitter::UI_TelemetryTransmitter()	1
+../Core/Src/UI_TelemetryTransmitter.cpp:41:26:static UI_TelemetryTransmitter& UI_TelemetryTransmitter::get_instance()	3
+../Core/Src/UI_TelemetryTransmitter.cpp:46:6:void UI_TelemetryTransmitter::start_thread(uint16_t, UBaseType_t)	2
+../Core/Src/UI_TelemetryTransmitter.cpp:59:6:static void UI_TelemetryTransmitter::runStatic(void*)	1
+../Core/Src/UI_TelemetryTransmitter.cpp:61:6:void UI_TelemetryTransmitter::task_loop()	1

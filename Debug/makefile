@@ -13,108 +13,11 @@ RM := rm -rf
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
--include Middlewares/ST/PnPLCompManager/Src/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
--include DSP/Source/TransformFunctions/subdir.mk
--include DSP/Source/SupportFunctions/subdir.mk
--include DSP/Source/StatisticsFunctions/subdir.mk
--include DSP/Source/SVMFunctions/subdir.mk
--include DSP/Source/QuaternionMathFunctions/subdir.mk
--include DSP/Source/MatrixFunctions/subdir.mk
--include DSP/Source/InterpolationFunctions/subdir.mk
--include DSP/Source/FilteringFunctions/subdir.mk
--include DSP/Source/FastMathFunctions/subdir.mk
--include DSP/Source/DistanceFunctions/subdir.mk
--include DSP/Source/ControllerFunctions/subdir.mk
--include DSP/Source/ComplexMathFunctions/subdir.mk
--include DSP/Source/CommonTables/subdir.mk
--include DSP/Source/BayesFunctions/subdir.mk
--include DSP/Source/BasicMathFunctions/subdir.mk
--include DSP/Examples/ARM/arm_variance_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_variance_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_variance_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_variance_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_variance_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_variance_example/subdir.mk
--include DSP/Examples/ARM/arm_svm_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_svm_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_svm_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_svm_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_svm_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_svm_example/subdir.mk
--include DSP/Examples/ARM/arm_sin_cos_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_sin_cos_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_sin_cos_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_sin_cos_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_sin_cos_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_sin_cos_example/subdir.mk
--include DSP/Examples/ARM/arm_signal_converge_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_signal_converge_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_signal_converge_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_signal_converge_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_signal_converge_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_signal_converge_example/subdir.mk
--include DSP/Examples/ARM/arm_matrix_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_matrix_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_matrix_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_matrix_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_matrix_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_matrix_example/subdir.mk
--include DSP/Examples/ARM/arm_linear_interp_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_linear_interp_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_linear_interp_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_linear_interp_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_linear_interp_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_linear_interp_example/subdir.mk
--include DSP/Examples/ARM/arm_graphic_equalizer_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_graphic_equalizer_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_graphic_equalizer_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_graphic_equalizer_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_graphic_equalizer_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_graphic_equalizer_example/subdir.mk
--include DSP/Examples/ARM/arm_fir_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_fir_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_fir_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_fir_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_fir_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_fir_example/subdir.mk
--include DSP/Examples/ARM/arm_fft_bin_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_fft_bin_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_fft_bin_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_fft_bin_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_fft_bin_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_fft_bin_example/subdir.mk
--include DSP/Examples/ARM/arm_dotproduct_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_dotproduct_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_dotproduct_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_dotproduct_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_dotproduct_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_dotproduct_example/subdir.mk
--include DSP/Examples/ARM/arm_convolution_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_convolution_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_convolution_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_convolution_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_convolution_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_convolution_example/subdir.mk
--include DSP/Examples/ARM/arm_class_marks_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_class_marks_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_class_marks_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_class_marks_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_class_marks_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_class_marks_example/subdir.mk
--include DSP/Examples/ARM/arm_bayes_example/RTE/Device/ARMCM7_SP/subdir.mk
--include DSP/Examples/ARM/arm_bayes_example/RTE/Device/ARMCM55/subdir.mk
--include DSP/Examples/ARM/arm_bayes_example/RTE/Device/ARMCM4_FP/subdir.mk
--include DSP/Examples/ARM/arm_bayes_example/RTE/Device/ARMCM3/subdir.mk
--include DSP/Examples/ARM/arm_bayes_example/RTE/Device/ARMCM0/subdir.mk
--include DSP/Examples/ARM/arm_bayes_example/subdir.mk
--include DSP/ComputeLibrary/Source/subdir.mk
 -include Core/ThreadSafe/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
--include Core/Custom/subdir.mk
--include Addons/PnPL/Components/subdir.mk
--include Addons/PnPL/AppModel/subdir.mk
+-include Core/Inc/Custom/Motor/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -161,34 +64,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := Project Red F446RE
+BUILD_ARTIFACT_NAME := Project Red
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-Project\ Red\ F446RE.elf \
+Project\ Red.elf \
 
 MAP_FILES += \
-Project\ Red\ F446RE.map \
+Project\ Red.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-Project\ Red\ F446RE.list \
+Project\ Red.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: Project\ Red\ F446RE.elf secondary-outputs
+main-build: Project\ Red.elf secondary-outputs
 
 # Tool invocations
-Project\ Red\ F446RE.elf Project\ Red\ F446RE.map: $(OBJS) $(USER_OBJS) C:\Users\devhu\STM32CubeIDE\workspace_2.0.0\Project\ Red\ F446RE\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "Project Red F446RE.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\devhu\STM32CubeIDE\workspace_2.0.0\Project Red F446RE\STM32F446RETX_FLASH.ld" -Wl,-Map="Project Red F446RE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Project\ Red.elf Project\ Red.map: $(OBJS) $(USER_OBJS) C:\Users\devhu\STM32CubeIDE\workspace_2.0.0\Project\ Red\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "Project Red.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\devhu\STM32CubeIDE\workspace_2.0.0\Project Red\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Project Red.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _scanf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -197,14 +100,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Project\ Red\ F446RE.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Project Red F446RE.list"
+Project\ Red.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Project Red.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) Project\ Red\ F446RE.elf Project\ Red\ F446RE.list Project\ Red\ F446RE.map Project\\ Red\\ F446RE.elf default.size.stdout
+	-$(RM) Project\ Red.elf Project\ Red.list Project\ Red.map Project\\ Red.elf default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

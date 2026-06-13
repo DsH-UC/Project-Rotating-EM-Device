@@ -1,0 +1,5 @@
+../Core/Src/ChargingStageTest.cpp:13:1:ChargingStageTest::ChargingStageTest()	1
+../Core/Src/ChargingStageTest.cpp:14:1:ChargingStageTest::~ChargingStageTest()	1
+../Core/Src/ChargingStageTest.cpp:16:6:static void ChargingStageTest::run_charging_stage_test_task(void*)	1
+../Core/Src/ChargingStageTest.cpp:22:6:static void ChargingStageTest::run_charging_stage_test_sequence()	1
+../Core/Src/ChargingStageTest.cpp:68:6:static void ChargingStageTest::init_charging_stage_test_thread(uint16_t, UBaseType_t)	1

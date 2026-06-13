@@ -1,0 +1,16 @@
+../Core/Src/ChargingStage.cpp:35:24:void __tcf_0()	1
+../Core/Src/ChargingStage.cpp:34:17:static ChargingStage::ChargingStage& ChargingStage::ChargingStage::get_instance()	3
+../Core/Src/ChargingStage.cpp:39:2:ChargingStage::ChargingStage::ChargingStage()	1
+../Core/Src/ChargingStage.cpp:49:2:ChargingStage::ChargingStage::~ChargingStage()	1
+../Core/Src/ChargingStage.cpp:56:8:float ChargingStage::ChargingStage::read_sensor(int)	1
+../Core/Src/ChargingStage.cpp:61:7:bool ChargingStage::ChargingStage::read_rot_block_is_motor_aligned()	1
+../Core/Src/ChargingStage.cpp:65:6:int ChargingStage::ChargingStage::read_rot_block_num_consumed_rails()	1
+../Core/Src/ChargingStage.cpp:69:8:float ChargingStage::ChargingStage::get_IR_velocity()	1
+../Core/Src/ChargingStage.cpp:73:7:bool ChargingStage::ChargingStage::get_is_launch_payload_ready()	1
+../Core/Src/ChargingStage.cpp:79:7:void ChargingStage::ChargingStage::start_charging_stage_subsystem_thread()	1
+../Core/Src/ChargingStage.cpp:92:7:static void ChargingStage::ChargingStage::runStatic(void*)	1
+../Core/Src/ChargingStage.cpp:97:7:void ChargingStage::ChargingStage::charging_stage_task(void*)	13
+../Core/Src/ChargingStage.cpp:158:7:void ChargingStage::ChargingStage::ui_launch_button_ISR(void*)	2
+../Core/Src/ChargingStage.cpp:170:7:void ChargingStage::ChargingStage::set_test_mode(bool)	2
+../Core/Src/ChargingStage.cpp:178:7:void ChargingStage::ChargingStage::set_mock_inputs(float, bool, bool, int)	2
+../Core/Src/ChargingStage.cpp:191:7:void ChargingStage::ChargingStage::simulate_button_press()	1

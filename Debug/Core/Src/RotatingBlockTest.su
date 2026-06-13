@@ -1,0 +1,6 @@
+../Core/Src/RotatingBlockTest.cpp:124:1:RotatingBlockTest::RotatingBlockTest()	16	static
+../Core/Src/RotatingBlockTest.cpp:125:1:RotatingBlockTest::~RotatingBlockTest()	16	static
+../Core/Src/RotatingBlockTest.cpp:127:6:static void RotatingBlockTest::run_rotating_block_test_task(void*)	16	static
+../Core/Src/RotatingBlockTest.cpp:133:13:void print_rb_state(const char*, int, int)	216	static
+../Core/Src/RotatingBlockTest.cpp:150:6:static void RotatingBlockTest::run_rotating_block_test_sequence()	16	static
+../Core/Src/RotatingBlockTest.cpp:287:6:static void RotatingBlockTest::init_rotating_block_test_thread(uint16_t, UBaseType_t)	32	static,ignoring_inline_asm
