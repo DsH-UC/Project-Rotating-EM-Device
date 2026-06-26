@@ -13,46 +13,102 @@
 #include "queue.h"
 #include "semphr.h"
 
+/*
+ * Class: IRBreakSensor
+ *
+ * Description: The IRBreakSensor class is the software interface for two sets of IR break sensors used to sense
+ * 				payload velocity concurrently. This class would implement software functionality for the Velocity Sensor
+ * 				on the Master Block Diagram.
+ */
 class IRBreakSensor {
 public:
-	// TODO 4/29/26 4:49am
-	// Configure GPIO pins for both GPIO_MODE_IT_FALLING and GPIO_PULLUP
-	// -> Done, but need to generate code from CubeMX and redo main file
 
-	// TODO 4/30/26 12:11am
-	// Might be able to remove port parameters since they're unused
-
-	// TODO 4/30/26 2:44am
-	// Finish subsystem SM testing tmr for ChrStg and RotBlock
-	// Revise Cooling Sys state machine in notebook
-	// Bluetooth streaming stuff(setup ESP32 onto STM32 + read GUI buttons) + meet Hudson
-	// Cooling System: write fan GPIO/PWM here based on m_fan_on
-	// Rotary encoder code integration, waiting on Boris
-	// Sensor Logging pipeline and Streaming pipeline
-	// physical voltage testing
-
+	/*
+	 * Function: get_instance
+	 *
+	 * Description: The get_instance function is the sole singleton accessor to the IRBreakSensor class.
+	 *
+	 * Outputs: The reference to an anonymous sole object instance of the IRBreakSensor class.
+	 */
     static IRBreakSensor& get_instance();
 
     // Disable copying
     IRBreakSensor(const IRBreakSensor&) = delete;
     IRBreakSensor& operator=(const IRBreakSensor&) = delete;
 
+    /*
+     * Function: init_IR_break_thread
+     *
+     * Description: Initializes a single thread that executes the reading of and processing of IR break sensor beam
+     * 				blocked events into a velocity.
+     *
+     * Parameters: stackSize - thread stack memory size allocation in number of words using heap memory.
+     * 		   priority - thread execution priority.
+     */
     void init_IR_break_thread(uint16_t stackSize, UBaseType_t priority);
 
+    /*
+     * Function: init
+     *
+     * Description: Initializes the IRBreakSensor class by assigning its GPIO pins and internal mutex and
+     * producer/consumer queue
+     *
+     * Parameters: startPin - GPIO pin number for the first set of IR Break sensors the payload passes
+     * 		   endPin - GPIO pin number for the second set of IR Break sensors the payload passes
+     */
     void init(uint16_t startPin, uint16_t endPin);
 
+    /*
+     * Function: on_exti_callback
+     *
+     * Description: External interrupt handler function inserted into external interrupt callback for when a
+     * 				GPIO pin for an IR Break sensor set detects an edge.
+     *
+     * Parameters: GPIO_pin - GPIO pin number for a single set of IR Break sensors.
+     */
     void on_exti_callback(uint16_t GPIO_Pin);
 
+    /*
+     * Function: task_loop
+     *
+     * Description: Wrapper for the block of code to be executed by the class thread within a while loop. Every
+     * 				loop execution ends with the blocking of the thread for a limited duration. The thread loop for
+     * 				this class dequeues a producer/consumer event queue where blocked beam events come with an
+     * 				event type (start or end beam type) and timestamp to track when both beams have been blocked.
+     */
     void task_loop();
 
+    /*
+     * Function: get_elapsed_ms
+     *
+     * Description: Computes the elapsed time between the blocking of the start beam from one set of IR break sensors
+     * 				and the end beam from the other IT break sensor.
+     *
+     * Outputs: 0 ms when both beams have not been blocked. Otherwise returns the timestamp difference between when
+     * 			the start and the end beams were blocked.
+     */
     uint32_t get_elapsed_ms() const;
 
+    /*
+     * Function: get_velocity
+     *
+     * Description: Uses the length of the payload track with the elapsed time between both blocked beam events to
+     * 				compute and return a velocity.
+     *
+     * Outputs: 0 m/s when both beams have not been blocked yet. Otherwise returns the velocity of the payload.
+     */
     float get_velocity();
 
+    /*
+     * Function: reset
+     *
+     * Description: Resets the tracking logic determining when the start and end beams were both blocked within the
+     * thread loop in that order.
+     */
     void reset();
 
 private:
-    enum class IRBreakEventType {
+    enum class IRBreakEventType { // Classification categories representing which sensor beam was broken.
         START,
         END
     };
@@ -82,6 +138,7 @@ private:
     bool m_is_started;
     bool m_is_finished;
 
+    // C wrapper around C++ task_loop function
     static void taskEntry(void* argument);
 };
 

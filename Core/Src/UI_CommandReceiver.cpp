@@ -86,29 +86,29 @@ void UI_CommandReceiver::task_loop() {
         if (xQueueReceive(m_rx_queue, &byte, portMAX_DELAY) == pdTRUE) {
             char c = static_cast<char>(byte);
 
-                        if (c == '\r') {
-                            continue;
-                        }
+			if (c == '\r') {
+				continue;
+			}
 
-                        if (c == '\n') {
-                            m_line_buffer[m_line_index] = '\0';
+			if (c == '\n') {
+				m_line_buffer[m_line_index] = '\0';
 
-                            if (m_line_index > 0) {
-                                process_line(m_line_buffer);
-                            }
+				if (m_line_index > 0) {
+					process_line(m_line_buffer);
+				}
 
-                            m_line_index = 0;
-                            m_line_buffer[0] = '\0';
-                            continue;
-                        }
+				m_line_index = 0;
+				m_line_buffer[0] = '\0';
+				continue;
+			}
 
-                        if (m_line_index < LINE_BUFFER_SIZE - 1) {
-                            m_line_buffer[m_line_index++] = c;
-                        } else {
-                            // Overflow: reset line
-                            m_line_index = 0;
-                            m_line_buffer[0] = '\0';
-                        }
+			if (m_line_index < LINE_BUFFER_SIZE - 1) {
+				m_line_buffer[m_line_index++] = c;
+			} else {
+				// Overflow: reset line
+				m_line_index = 0;
+				m_line_buffer[0] = '\0';
+			}
 
             // if (c == '\n' || c == '\r') continue; // Ignore line endings; process_command(c);
         }
